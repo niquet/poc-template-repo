@@ -11,14 +11,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Exit if not first commit
+      - name: Check if first commit
+        id: first_commit
         run: |
-          if [ "$(git rev-list --count HEAD)" -ne 1 ]; then
-            echo "Not the first commit on main. Exiting workflow."
-            exit 0
+          if [ "$(git rev-list --count HEAD)" -eq 1 ]; then
+            echo "first_commit=true" >> $GITHUB_OUTPUT
+          else
+            echo "first_commit=false" >> $GITHUB_OUTPUT
           fi
 
       - name: Create the purpose and scope issue
+        if: steps.first_commit.outputs.first_commit == 'true'
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -26,6 +29,7 @@ jobs:
           filename: .github/ISSUE_TEMPLATE/purpose_and_scope_issue.md
 
       - name: Create the priorities issue
+        if: steps.first_commit.outputs.first_commit == 'true'
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -33,6 +37,7 @@ jobs:
           filename: .github/ISSUE_TEMPLATE/priorities_issue.md
 
       - name: Create the iterate and refactor issue
+        if: steps.first_commit.outputs.first_commit == 'true'
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -40,6 +45,7 @@ jobs:
           filename: .github/ISSUE_TEMPLATE/iterate_and_refactor_issue.md
 
       - name: Create the communicate and validate issue
+        if: steps.first_commit.outputs.first_commit == 'true'
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -47,6 +53,7 @@ jobs:
           filename: .github/ISSUE_TEMPLATE/communicate_and_validate_issue.md
 
       - name: Create the maintain discipline issue
+        if: steps.first_commit.outputs.first_commit == 'true'
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
