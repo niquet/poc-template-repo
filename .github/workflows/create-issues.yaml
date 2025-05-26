@@ -8,20 +8,34 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       issues: write
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
-      - name: Check if first commit
-        id: first_commit
+      - name: Check for marker file
+        id: check_marker
         run: |
-          if [ "$(git rev-list --count HEAD)" -eq 1 ]; then
-            echo "first_commit=true" >> $GITHUB_OUTPUT
+          if [ -f .github/issues_created ]; then
+            echo "should_create=false" >> $GITHUB_OUTPUT
           else
-            echo "first_commit=false" >> $GITHUB_OUTPUT
+            echo "should_create=true" >> $GITHUB_OUTPUT
           fi
 
+      - name: Create marker file
+        if: steps.check_marker.outputs.should_create == 'true'
+        run: echo "Issues created on $(date)" > .github/issues_created
+
+      - name: Commit marker file
+        if: steps.check_marker.outputs.should_create == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .github/issues_created
+          git commit -m "Mark issues as created" || exit 0
+          git push
+
       - name: Create the purpose and scope issue
-        if: steps.first_commit.outputs.first_commit == 'true'
+        if: steps.check_marker.outputs.should_create == 'true'
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -29,7 +43,7 @@ jobs:
           filename: .github/ISSUE_TEMPLATE/purpose_and_scope_issue.md
 
       - name: Create the priorities issue
-        if: steps.first_commit.outputs.first_commit == 'true'
+        if: steps.check_marker.outputs.should_create == 'true'
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -37,7 +51,7 @@ jobs:
           filename: .github/ISSUE_TEMPLATE/priorities_issue.md
 
       - name: Create the iterate and refactor issue
-        if: steps.first_commit.outputs.first_commit == 'true'
+        if: steps.check_marker.outputs.should_create == 'true'
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,7 +59,7 @@ jobs:
           filename: .github/ISSUE_TEMPLATE/iterate_and_refactor_issue.md
 
       - name: Create the communicate and validate issue
-        if: steps.first_commit.outputs.first_commit == 'true'
+        if: steps.check_marker.outputs.should_create == 'true'
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -53,7 +67,7 @@ jobs:
           filename: .github/ISSUE_TEMPLATE/communicate_and_validate_issue.md
 
       - name: Create the maintain discipline issue
-        if: steps.first_commit.outputs.first_commit == 'true'
+        if: steps.check_marker.outputs.should_create == 'true'
         uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
