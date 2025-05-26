@@ -5,20 +5,21 @@ title: "Step 2 — Prioritize Simplicity in Code and Design"
 labels: documentation, needs-triage
 ---
 
-## Expressive and Transparent Code
+## 🧩 Expressive and Transparent Code
 
-Write code that is easy to read and understand, avoiding clever tricks or unnecessary complexity.
+Write code that’s easy to read and understand. Avoid clever tricks or unnecessary complexity.
 
 ## Keep it Unsurprising
 
-Use straightforward logic and clear naming so others (or your future self) can grasp the intent immediately.
+Use clear logic and straightforward naming so anyone (including your future self) can quickly grasp the intent.
 
 ## Avoid Premature Abstractions
 
-Resist the urge to generalize or abstract code until it becomes absolutely necessary for clarity or maintenance.
+Don’t generalize or abstract code until it’s absolutely necessary for clarity or maintenance.
 
-## Action Items
+## ✅ Action Items
 
 - [ ] Keep code easy to read and understand
 - [ ] Use straightforward logic and clear naming
-- [ ] Don't generalize or abstract code until it becomes absolutely necessary
+- [ ] Avoid clever tricks or unnecessary complexity
+- [ ] Don’t abstract or generalize until it’s clearly needed
