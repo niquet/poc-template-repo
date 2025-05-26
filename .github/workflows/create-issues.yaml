@@ -23,7 +23,7 @@ jobs:
 
       - name: Create marker file
         if: steps.check_marker.outputs.should_create == 'true'
-        run: echo "Issues created on $(date)" > .github/issues_created
+        run: echo "Issues created on $(date +"%Y-%m-%dT%H:%M:%S.%6N%:z")" > .github/issues_created
 
       - name: Commit marker file
         if: steps.check_marker.outputs.should_create == 'true'
