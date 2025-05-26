@@ -5,19 +5,19 @@ title: "Step 1 — Define Project Purpose and Scope"
 labels: documentation, scope, needs-triage
 ---
 
-## Business Need or Learning Outcome
+## 🎯 Define Business Need or Learning Outcome
 
 Briefly describe what problem you are solving or what concept you are exploring.
 
 ## Success Criteria
 
-How will we know this is successful? List clear, measurable outcomes or learning objectives.
+List clear, measurable outcomes or learning objectives that will define success.
 
 ## Out of Scope
 
-Constrain the scope: What will NOT be included? List features, tasks, or areas intentionally excluded from this effort.
+What will **not** be included? List features, tasks, or areas intentionally excluded from this effort.
 
-_Remember: Avoid adding features or abstractions that aren’t necessary._
+> _Tip: Avoid adding features or abstractions that aren’t necessary._
 
 ## Action Items
 
