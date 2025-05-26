@@ -1,0 +1,52 @@
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  create-issues:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Exit if not first commit
+        run: |
+          if [ "$(git rev-list --count HEAD)" -ne 1 ]; then
+            echo "Not the first commit on main. Exiting workflow."
+            exit 0
+          fi
+
+      - name: Create the purpose and scope issue
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/ISSUE_TEMPLATE/purpose_and_scope_issue.md
+
+      - name: Create the priorities issue
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/ISSUE_TEMPLATE/priorities_issue.md
+
+      - name: Create the iterate and refactor issue
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/ISSUE_TEMPLATE/iterate_and_refactor_issue.md
+
+      - name: Create the communicate and validate issue
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/ISSUE_TEMPLATE/communicate_and_validate_issue.md
+
+      - name: Create the maintain discipline issue
+        uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          filename: .github/ISSUE_TEMPLATE/maintain_discipline_issue.md
