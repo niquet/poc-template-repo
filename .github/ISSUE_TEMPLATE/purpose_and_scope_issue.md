@@ -1,4 +1,6 @@
 ---
+name: Purpose and scope
+about: Clearly define the proof of concepts purpose, scope, and success criteria before starting.
 title: Step 1 — Define Purpose and Scope
 labels: documentation, scope, needs-triage
 ---
