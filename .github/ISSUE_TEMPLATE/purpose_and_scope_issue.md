@@ -19,7 +19,7 @@ What will **not** be included? List features, tasks, or areas intentionally excl
 
 > _Tip: Avoid adding features or abstractions that aren’t necessary._
 
-## Action Items
+## ✅ Action Items
 
 - [ ] Identify the business need or learning outcome
 - [ ] Define explicit success criteria
