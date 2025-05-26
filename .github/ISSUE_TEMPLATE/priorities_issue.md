@@ -1,7 +1,6 @@
 ---
 name: Prioritize Simplicity
 about: Aim for code that is easy to read and understand, avoiding clever tricks or unnecessary complexity.
-title: Step 2 — Prioritize Simplicity in Code and Design
 labels: documentation, needs-triage
 ---
 
