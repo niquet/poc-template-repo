@@ -5,7 +5,7 @@ title: "Step 1 — Define Project Purpose and Scope"
 labels: documentation, scope, needs-triage
 ---
 
-## 🎯 Define Business Need or Learning Outcome
+## 🎯 Business Need or Learning Outcome
 
 Briefly describe what problem you are solving or what concept you are exploring.
 
