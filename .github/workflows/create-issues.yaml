@@ -22,6 +22,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/purpose_and_scope_issue.md
+          title: "Step 1 — Define Project Purpose and Scope"
 
       - name: Create the priorities issue
         uses: JasonEtco/create-an-issue@v2
@@ -29,6 +30,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/priorities_issue.md
+          title: "Step 2 — Prioritize Simplicity in Code and Design"
 
       - name: Create the iterate and refactor issue
         uses: JasonEtco/create-an-issue@v2
@@ -36,6 +38,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/iterate_and_refactor_issue.md
+          title: "Step 3 — Iterate and Refactor"
 
       - name: Create the communicate and validate issue
         uses: JasonEtco/create-an-issue@v2
@@ -43,6 +46,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/communicate_and_validate_issue.md
+          title: "Step 4 — Communicate and Validate"
 
       - name: Create the maintain discipline issue
         uses: JasonEtco/create-an-issue@v2
@@ -50,3 +54,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           filename: .github/ISSUE_TEMPLATE/maintain_discipline_issue.md
+          title: "Step 5 — Maintain Discipline"
